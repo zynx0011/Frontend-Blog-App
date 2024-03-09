@@ -28,7 +28,7 @@ function Login() {
         email,
         password,
       });
-      dispatch(signInSuccess(res.data.data));
+      dispatch(signInSuccess(res.data.data?.user || res.data.data));
       Navigate("/");
       setErrorText(false);
     } catch (error) {
