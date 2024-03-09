@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { signInSuccess } from "../store/authSlice";
-import { API_URL } from "../../config";
+import { API_URL } from "../config";
 
 function Signup() {
   const navigate = useNavigate();
