@@ -6,7 +6,7 @@ import { Button, Input, Logo } from "./index";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { signInStart, signInSuccess, signInFailure } from "../store/authSlice";
-import { API_URL } from "../config";
+import { API_URL } from "../config.js";
 
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
