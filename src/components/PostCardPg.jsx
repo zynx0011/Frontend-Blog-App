@@ -16,6 +16,8 @@ const PostCardPg = () => {
   const data = currentUser?.data?.data?.user;
   const data2 = currentUser?.user;
 
+  // console.log(currentUser?._id, post?.userRef);
+
   const navigate = useNavigate();
   //   console.log(data);
   //   console.log(currentUser);
@@ -47,7 +49,8 @@ const PostCardPg = () => {
   const deletePost = async () => {
     try {
       const res = await axios.delete(
-        `${API_URL}/api/v1/listing/delete/${params.id}`
+        `${API_URL}/api/v1/listing/delete/${params.id}`,
+        { withCredentials: true }
       );
       navigate("/");
     } catch (error) {
@@ -60,32 +63,32 @@ const PostCardPg = () => {
       <Container>
         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2 ">
           <img
-            src={post.featuredImage}
-            alt={post.title}
+            src={post?.featuredImage}
+            alt={post?.title}
             className="rounded-xl"
           />
 
-          {currentUser?._id ||
-            data?._id === post?.userRef ||
-            (data2?._id === post?.userRef && (
-              <div className="absolute  right-[3%] top-6">
-                <Link to={`/edit-post/${post._id}`}>
-                  <Button
-                    bgColor="bg-green-500"
-                    className="mr-3 font-bold hover:text-black"
-                  >
-                    Edit
-                  </Button>
-                </Link>
+          {currentUser?._id === post?.userRef ||
+          data?._id === post?.userRef ||
+          data2?._id === post?.userRef ? (
+            <div className="absolute  right-[3%] top-6">
+              <Link to={`/edit-post/${post._id}`}>
                 <Button
-                  bgColor="bg-red-500"
-                  className="font-bold hover:text-black "
-                  onClick={deletePost}
+                  bgColor="bg-green-500"
+                  className="mr-3 font-bold hover:text-black"
                 >
-                  Delete
+                  Edit
                 </Button>
-              </div>
-            ))}
+              </Link>
+              <Button
+                bgColor="bg-red-500"
+                className="font-bold hover:text-black "
+                onClick={deletePost}
+              >
+                Delete
+              </Button>
+            </div>
+          ) : null}
         </div>
         <div className="flex flex-col gap-8">
           <div className="w-full mb-6">

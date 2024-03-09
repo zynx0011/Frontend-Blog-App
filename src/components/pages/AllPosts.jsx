@@ -13,7 +13,9 @@ function AllPosts() {
   useEffect(() => {
     const data = async () => {
       try {
-        const res = await axios.get(`${API_URL}/api/v1/listing/get`);
+        const res = await axios.get(`${API_URL}/api/v1/listing/get`, {
+          withCredentials: true,
+        });
         // console.log(res);
         setPosts(res.data.data);
       } catch (error) {
@@ -43,7 +45,7 @@ function AllPosts() {
           <Container>
             <div className="flex flex-wrap">
               {posts.map((post) => (
-                <div key={post.$id} className="p-2 sm:w-[50%]">
+                <div key={post._id} className="p-2 sm:w-[50%]">
                   <PostCard {...post} />
                 </div>
               ))}

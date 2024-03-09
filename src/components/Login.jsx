@@ -24,10 +24,14 @@ function Login() {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await axios.post(`${API_URL}/api/v1/users/SignIn`, {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        `${API_URL}/api/v1/users/SignIn`,
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
       dispatch(signInSuccess(res.data.data?.user || res.data.data));
       Navigate("/");
       setErrorText(false);

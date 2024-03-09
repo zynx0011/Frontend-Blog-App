@@ -35,7 +35,8 @@ const NewPasswordPage = () => {
         {
           newPassword,
           confirmPassword,
-        }
+        },
+        { withCredentials: true }
       );
 
       setSuccess(true);

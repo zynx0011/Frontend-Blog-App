@@ -112,7 +112,8 @@ function AddPost() {
         {
           ...formdata,
           userRef: currentUser?._id || data?._id,
-        }
+        },
+        { withCredentials: true }
       );
       // console.log(res);
       // setErrorText(false);

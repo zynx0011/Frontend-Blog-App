@@ -22,7 +22,8 @@ const Myposts = () => {
         setError(true);
         setSuccess(false);
         const res = await axios.get(
-          `${API_URL}/api/v1/listing/my-posts/${params.id} `
+          `${API_URL}/api/v1/listing/my-posts/${params.id} `,
+          { withCredentials: true }
         );
         // console.log(res.data.data);
         setPosts(res.data.data || res.data.data?.listing);

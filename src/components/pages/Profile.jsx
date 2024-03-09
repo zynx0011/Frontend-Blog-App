@@ -33,7 +33,8 @@ const Profile = () => {
     const userInfo = async () => {
       try {
         const res = await axios.get(
-          `${API_URL}/api/v1/users/current-user/${params.id}`
+          `${API_URL}/api/v1/users/current-user/${params.id}`,
+          { withCredentials: true }
         );
         // console.log(res.data);
         setUserInfo(res.data);
@@ -53,7 +54,8 @@ const Profile = () => {
         `${API_URL}/api/v1/users/update/${params.id}`,
         {
           ...userInfo,
-        }
+        },
+        { withCredentials: true }
       );
       // console.log(res.data.data);
       setUserInfo(res.data.data);

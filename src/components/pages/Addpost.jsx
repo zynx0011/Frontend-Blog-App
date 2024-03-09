@@ -72,10 +72,14 @@ function AddPost() {
     setError(false);
 
     try {
-      const res = await axios.post(`${API_URL}/api/v1/listing/create`, {
-        ...formdata,
-        userRef: currentUser?._id || data?._id || data2?._id,
-      });
+      const res = await axios.post(
+        `${API_URL}/api/v1/listing/create`,
+        {
+          ...formdata,
+          userRef: currentUser?._id || data?._id || data2?._id,
+        },
+        { withCredentials: true }
+      );
       setError(false);
       // console.log(res);
       navigate("/");
@@ -86,8 +90,6 @@ function AddPost() {
   };
 
   return (
-  
-
     <div className="py-8 text-white">
       <Container>
         <h1 className="text-4xl font-bold text-center mb-12 text-white">

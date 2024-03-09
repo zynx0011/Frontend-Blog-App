@@ -20,11 +20,11 @@ function LogoutBtn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //https://backend-blog-app-75vm.onrender.com
+
   const logoutHandler = async () => {
     try {
-      await axios.get(
-        `https://backend-blog-app-75vm.onrender.com/api/v1/users/logout`
-      );
+      await axios.get(`/api/v1/users/logout`, { withCredentials: true });
       dispatch(signOut());
       navigate("/login");
     } catch (error) {
