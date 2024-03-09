@@ -13,6 +13,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { API_URL } from "../../config";
 
 function LogoutBtn() {
   // dispatch will update the store value
