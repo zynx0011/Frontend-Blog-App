@@ -4,7 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Container, Button } from "../components/index";
 import { useSelector } from "react-redux";
 import { Skeleton } from "@/components/ui/skeleton";
-import { API_URL } from "../../config";
+import { API_URL } from "../config";
 
 const PostCardPg = () => {
   const params = useParams();
