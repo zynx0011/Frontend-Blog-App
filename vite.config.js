@@ -6,7 +6,7 @@ import path from "path";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "http://localhost:8000",
+      "/api": "https://backend-blog-app-75vm.onrender.com",
     },
   },
   plugins: [react()],
