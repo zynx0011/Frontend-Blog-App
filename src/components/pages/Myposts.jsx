@@ -2,7 +2,7 @@ import { Container } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PostCard } from "../PostCardPg";
+import { PostCard } from "..";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { API_URL } from "../../config";
