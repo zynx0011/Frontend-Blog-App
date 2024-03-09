@@ -12,6 +12,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { API_URL } from "../../config";
 
 const Profile = () => {
   // const [userInfo, setUserInfo] = useState({
@@ -31,7 +32,9 @@ const Profile = () => {
   useEffect(() => {
     const userInfo = async () => {
       try {
-        const res = await axios.get(`/api/v1/users/current-user/${params.id}`);
+        const res = await axios.get(
+          `${API_URL}/api/v1/users/current-user/${params.id}`
+        );
         // console.log(res.data);
         setUserInfo(res.data);
       } catch (error) {
@@ -46,9 +49,12 @@ const Profile = () => {
     e.preventDefault();
     // Send updated user info to backend or perform necessary actions
     try {
-      const res = await axios.put(`/api/v1/users/update/${params.id}`, {
-        ...userInfo,
-      });
+      const res = await axios.put(
+        `${API_URL}/api/v1/users/update/${params.id}`,
+        {
+          ...userInfo,
+        }
+      );
       // console.log(res.data.data);
       setUserInfo(res.data.data);
     } catch (error) {

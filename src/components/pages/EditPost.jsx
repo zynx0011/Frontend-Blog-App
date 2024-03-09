@@ -15,6 +15,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Alert } from "@mui/material";
+import { API_URL } from "../../config";
 
 function AddPost() {
   const toast = useToast();
@@ -53,7 +54,7 @@ function AddPost() {
   useEffect(() => {
     const fetchListing = async () => {
       const listingId = params.slug;
-      const res = await axios.get(`/api/v1/listing/get/${listingId}`);
+      const res = await axios.get(`${API_URL}/api/v1/listing/get/${listingId}`);
       // console.log(res.data.data);
       setFormdata(res.data.data);
     };
@@ -106,10 +107,13 @@ function AddPost() {
     e.preventDefault();
     try {
       // setErrorText(false);
-      const res = await axios.post(`/api/v1/listing/update/${params.slug}`, {
-        ...formdata,
-        userRef: currentUser?._id || data?._id,
-      });
+      const res = await axios.post(
+        `${API_URL}/api/v1/listing/update/${params.slug}`,
+        {
+          ...formdata,
+          userRef: currentUser?._id || data?._id,
+        }
+      );
       // console.log(res);
       // setErrorText(false);
       setUpdateSuccess(true);

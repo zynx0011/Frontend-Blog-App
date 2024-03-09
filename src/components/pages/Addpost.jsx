@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import { useToast } from "@/components/ui/use-toast";
+import { API_URL } from "../../config";
 
 function AddPost() {
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ function AddPost() {
     setError(false);
 
     try {
-      const res = await axios.post(`/api/v1/listing/create`, {
+      const res = await axios.post(`${API_URL}/api/v1/listing/create`, {
         ...formdata,
         userRef: currentUser?._id || data?._id || data2?._id,
       });

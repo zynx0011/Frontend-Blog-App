@@ -6,6 +6,7 @@ import { Button, Input, Logo } from "./index";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { signInStart, signInSuccess, signInFailure } from "../store/authSlice";
+import { API_URL } from "../../config";
 
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
@@ -23,7 +24,7 @@ function Login() {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await axios.post(`/api/v1/users/SignIn`, {
+      const res = await axios.post(`${API_URL}/api/v1/users/SignIn`, {
         email,
         password,
       });

@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { PostCard } from "..";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { API_URL } from "../../config";
+
 const Myposts = () => {
   const [posts, setPosts] = useState([]);
   console.log(posts);
@@ -19,7 +21,9 @@ const Myposts = () => {
         setError(false);
         setError(true);
         setSuccess(false);
-        const res = await axios.get(`/api/v1/listing/my-posts/${params.id} `);
+        const res = await axios.get(
+          `${API_URL}/api/v1/listing/my-posts/${params.id} `
+        );
         // console.log(res.data.data);
         setPosts(res.data.data);
         setSuccess(true);

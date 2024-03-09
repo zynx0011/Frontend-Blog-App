@@ -4,6 +4,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Container, Button } from "../components/index";
 import { useSelector } from "react-redux";
 import { Skeleton } from "@/components/ui/skeleton";
+import { API_URL } from "../../config";
 
 const PostCardPg = () => {
   const params = useParams();
@@ -30,7 +31,9 @@ const PostCardPg = () => {
     // }
     const posts = async (e) => {
       try {
-        const res = await axios.get(`/api/v1/listing/get/${params.id}`);
+        const res = await axios.get(
+          `${API_URL}/api/v1/listing/get/${params.id}`
+        );
         // console.log(res);
         setPost(res.data.data);
       } catch (error) {
@@ -43,7 +46,9 @@ const PostCardPg = () => {
 
   const deletePost = async () => {
     try {
-      const res = await axios.delete(`/api/v1/listing/delete/${params.id}`);
+      const res = await axios.delete(
+        `${API_URL}/api/v1/listing/delete/${params.id}`
+      );
       navigate("/");
     } catch (error) {
       console.log(error, "error in delete post");

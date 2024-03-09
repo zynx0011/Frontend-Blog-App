@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { signInSuccess } from "../store/authSlice";
+import { API_URL } from "../../config";
 
 function Signup() {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ function Signup() {
     try {
       setLoading(true);
       setError(false);
-      const res = await axios.post(`/api/v1/users/Signup`, {
+      const res = await axios.post(`${API_URL}/api/v1/users/Signup`, {
         username,
         email,
         password,

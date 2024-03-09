@@ -3,6 +3,7 @@ import { Container, PostCard } from "../index";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { API_URL } from "../../config";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
@@ -12,7 +13,7 @@ function AllPosts() {
   useEffect(() => {
     const data = async () => {
       try {
-        const res = await axios.get(`/api/v1/listing/get`);
+        const res = await axios.get(`${API_URL}/api/v1/listing/get`);
         // console.log(res);
         setPosts(res.data.data);
       } catch (error) {

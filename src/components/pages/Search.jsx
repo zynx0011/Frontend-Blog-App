@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../../config";
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,7 +17,9 @@ const SearchPage = () => {
         const searchQuery = urlParams.toString();
         // console.log(searchQuery);
 
-        const res = await axios.get(`/api/v1/listing/search?${searchQuery}`);
+        const res = await axios.get(
+          `${API_URL}/api/v1/listing/search?${searchQuery}`
+        );
         setSearchResults(res.data.data?.listing);
       } catch (error) {
         console.log(error);

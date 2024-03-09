@@ -1,4 +1,5 @@
 import React from "react";
+import { API_URL } from "../../config";
 
 const ForgotPass = () => {
   const handleSubmit = async (e) => {
@@ -9,7 +10,7 @@ const ForgotPass = () => {
 
     try {
       setError(false);
-      const response = await fetch("/api/v1/users/forgotPassword", {
+      const response = await fetch(`${API_URL}/api/v1/users/forgotPassword`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
