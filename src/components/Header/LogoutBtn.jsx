@@ -22,7 +22,7 @@ function LogoutBtn() {
 
   const logoutHandler = async () => {
     try {
-      await axios.get("/api/v1/users/logout");
+      await axios.get(`${API_URL}/api/v1/users/logout`);
       dispatch(signOut());
       navigate("/login");
     } catch (error) {
