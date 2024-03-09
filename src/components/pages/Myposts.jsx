@@ -25,7 +25,7 @@ const Myposts = () => {
           `${API_URL}/api/v1/listing/my-posts/${params.id} `
         );
         // console.log(res.data.data);
-        setPosts(res.data.data);
+        setPosts(res.data.data || res.data.data?.listing);
         setSuccess(true);
         setLoading(false);
       } catch (error) {
