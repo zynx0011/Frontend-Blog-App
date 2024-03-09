@@ -6,6 +6,7 @@ import "react-slideshow-image/dist/styles.css";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { API_URL } from "../../config";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -18,7 +19,7 @@ const Home = () => {
     const data = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`/api/v1/listing/get`);
+        const res = await axios.get(`${API_URL}/api/v1/listing/get`);
         // console.log(res);
         setPosts(res.data.data);
         setLoading(false);
