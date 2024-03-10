@@ -29,8 +29,8 @@ function Login() {
         {
           email,
           password,
-        },
-        { withCredentials: true }
+        }
+        // { withCredentials: true }
       );
       dispatch(signInSuccess(res.data.data?.user || res.data.data));
       Navigate("/");
