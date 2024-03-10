@@ -77,25 +77,21 @@ const Profile = () => {
                   </h1>
                   {/* <button className="text-indigo-600 hover:text-indigo-900">asdf</button> */}
                 </div>
-                <div className="border-2 sm:p-7 sm:min-h-[70vh] flex items-center ">
-                  <div className="text-white text-xl p-4 flex gap-10  flex-col">
-                    <h1 className=" m-3 ">
-                      Username :{" "}
-                      <span className="font-bold ">{userInfo?.username}</span>
-                    </h1>
-                    <hr className="mb-3" />
-                    <h1 className=" m-3">
-                      {" "}
-                      Email :{" "}
-                      <span className="font-bold ">{userInfo?.email}</span>
-                    </h1>
-                    <hr />
-                    <h1 className=" m-3">
-                      {" "}
-                      Bio :<span className="font-bold ">{bio}</span>
-                    </h1>
-                    <hr />
-                    <button className="p-3 bg-blue-700 font-semibold text-white rounded-lg hover:bg-blue-600">
+                <div className="border-2 sm:p-7 sm:min-h-[70vh] flex items-center sm:m-0 w-[80%] m-auto mb-5 sm:mr-16 bg-white/50 rounded-lg">
+                  <div className=" text-xl p-4 flex gap-5  flex-col">
+                    <h1 className=" font-semibold ">Username : </h1>
+                    <span className="font-semibold border p-3 rounded-lg">
+                      {userInfo?.username}
+                    </span>
+                    <h1 className="font-semibold"> Email : </h1>
+                    <span className="font-semibold border p-3 rounded-lg text-lg ">
+                      {userInfo?.email}
+                    </span>
+                    <h1 className="font-semibold"> Bio :</h1>
+                    <span className="font-semibold text-lg border p-3 rounded-lg ">
+                      {bio}
+                    </span>
+                    <button className="p-3 bg-blue-700 font-semibold mt-5 text-white rounded-lg hover:bg-blue-600">
                       {" "}
                       <Sheet>
                         <SheetTrigger asChild>
