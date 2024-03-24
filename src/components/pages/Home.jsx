@@ -51,33 +51,41 @@ const Home = () => {
   ) : (
     <>
       {/* slider  */}
-      {/* Slider */}
-      <div className="w-full sm:h-screen">
-        <Slide duration={3500} autoplay infinite>
+      <div className="w-full  sm:h-[100vh]">
+        <Slide
+          duration={3500}
+          autoplay={true}
+          infinite={true}
+          onChange={function noRefCheck() {}}
+          onStartChange={function noRefCheck() {}}
+        >
           {posts &&
+            posts.length > 0 &&
             posts.map((post) => (
               <div className="each-slide-effect relative" key={post?._id}>
-                <div
-                  className="w-full min-h-[70vh] sm:min-h-screen bg-cover bg-center"
-                  style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${post?.featuredImage})`,
-                  }}
-                >
-                  <div className="absolute top-1/4 left-[12%] max-w-2xl  flex flex-col gap-5 text-white">
-                    <h1 className="sm:text-5xl text-xl w-[60%] font-bold uppercase sm:w-full p-2">
-                      {post?.title}
-                    </h1>
-                    <p className="sm:text-2xl w-[80%] sm:w-full ml-2 font-bold">
-                      Multiple lines of text that form the lede, informing new
-                      readers quickly and efficiently about what's most
-                      interesting in this post's contents.
-                    </p>
-                    <Link
-                      to={`/post/${post._id}`}
-                      className="bg-[#1f2937] w-[44%] hover:bg-[#253142] sm:w-[24%] text-center text-xl font-bold py-2 ml-5 sm:mt-2 px-4 rounded"
-                    >
-                      Read More
-                    </Link>
+                <div className="w-full min-h-[70vh] sm:min-h-screen ">
+                  <div
+                    className="w-full h-[100%] sm:h-[100vh] bg-cover bg-center"
+                    style={{
+                      backgroundImage: ` linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${post?.featuredImage})`, //url(post?.featuredImage),
+                    }}
+                  >
+                    <div className="absolute top-[25%] left-[13%] max-w-2xl flex flex-col gap-5">
+                      <h1 className="sm:text-5xl text-xl w-[60%] font-bold text-white uppercase sm:w-full  p-2 ">
+                        {post?.title}
+                      </h1>
+                      <p className="sm:text-2xl w-[80%] sm:w-full ml-2 font-bold text-[#f9eded]">
+                        Multiple lines of text that form the lede, informing new
+                        readers quickly and efficiently about what's most
+                        interesting in this post's contents .
+                      </p>
+                      <Link
+                        to={`/post/${post._id}`}
+                        className="bg-[#1f2937]   w-[44%] hover:bg-[#253142] sm:w-[24%] text-center text-[#f9eded] font-bold py-2 ml-5 sm:mt-2 px-4 rounded"
+                      >
+                        Read More
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -85,13 +93,15 @@ const Home = () => {
         </Slide>
       </div>
 
-      {/* Latest Blog Posts */}
+      {/* //card */}
       <div className="container mx-auto px-4 mt-12 py-8">
         <h1 className="text-4xl font-bold mb-8 text-white">
           Latest Blog Posts
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Sample blog post cards */}
           {posts &&
+            posts.length > 0 &&
             posts.map((post) => (
               <Link to={`/post/${post._id}`} key={post._id}>
                 <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg">
@@ -117,49 +127,61 @@ const Home = () => {
                 </div>
               </Link>
             ))}
+          {/* Repeat for other blog post cards */}
+          {/* Example of a blog post card */}
+
+          {/* End of blog post cards */}
         </div>
       </div>
 
-      {/* Email Section */}
-      <div className="relative mx-auto my-5 max-w-4xl mt-20 w-full mb-11 rounded-lg bg-[#f9eded] shadow-lg">
-        <div className="p-8 md:p-12 lg:px-16">
-          <h2 className="text-2xl font-bold text-[#1f2937] md:text-3xl">
-            Wanna Find Out More About a Blog?
-          </h2>
-          <p className="hidden text-[#1f2937] sm:mt-4 sm:block">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            temporibus dicta mollitia!
-          </p>
-          <div className="mt-8 max-w-xl">
-            <form onSubmit={handleSubmit} className="sm:flex">
-              <input
-                type="text"
-                className="w-full rounded-md border border-indigo-200 p-3 text-sm bg-[#f9eded] font-semibold placeholder:text-black"
-                placeholder="Search"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <Link
-                to={"/search?/"}
-                className="group mt-4 flex w-full items-center justify-center rounded-md bg-indigo-600 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring-indigo-400 sm:mt-0 sm:w-auto"
-              >
-                Search
-              </Link>
-            </form>
+      {/* email section */}
+      {
+        <div class="relative mx-auto my-5 max-w-4xl mt-20 w-full mb-11 rounded-lg bg-[#f9eded] shadow-lg">
+          <div class="p-8 md:p-12 lg:px-16">
+            <div class="">
+              <h2 class="text-2xl font-bold text-[#1f2937] md:text-3xl">
+                Wanna Find Out More About a Blog?
+              </h2>
+
+              <p class="hidden text-[#1f2937] sm:mt-4 sm:block">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
+                temporibus dicta mollitia!
+              </p>
+            </div>
+
+            <div class="mt-8 max-w-xl">
+              <form onSubmit={handleSubmit}>
+                <div class="sm:flex">
+                  <input
+                    type="text"
+                    class="w-full rounded-md border border-indigo-200 p-3 text-sm bg-[#f9eded] font-semibold placeholder:text-black"
+                    placeholder="Search"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                  <Link
+                    to={"/search?/"}
+                    className="group mt-4 flex w-full items-center justify-center rounded-md bg-indigo-600 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring-indigo-400 sm:mt-0 sm:w-auto"
+                  >
+                    Search
+                  </Link>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      }
 
-      {/* Additional Section */}
       <div className="flex items-center flex-col gap-7 justify-center mt-7 mb-7 p-6">
-        <div>
-          <h1 className="font-bold text-5xl text-center text-white">
+        <div className="div">
+          <h1 className="h1 font-bold text-5xl text-center text-white">
             {posts[2]?.title}
           </h1>
         </div>
-        <div>
+        <div className="div">
           <Link to={`/post/${posts[2]?._id}`}>
-            <img src={posts[2]?.featuredImage} alt="" className="rounded-lg" />
+            {" "}
+            <img src={posts[2]?.featuredImage} alt="" className="img" />
           </Link>
         </div>
       </div>
