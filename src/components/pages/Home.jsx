@@ -42,14 +42,6 @@ const Home = () => {
     navigate(`/search?/${serachQuery}`);
   };
 
-  // useEffect(() => {
-  //   const urlParams = new URLSearchParams(location.search);
-  //   const searchTermFromUrl = urlParams.get("searchTerms");
-  //   if (searchTermFromUrl) {
-  //     setSearch(searchTermFromUrl);
-  //   }
-  // }, [location.search]);
-
   return loading ? (
     <div className="flex items-center justify-center text-white min-h-screen">
       <Box>
