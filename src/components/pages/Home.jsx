@@ -62,7 +62,7 @@ const Home = () => {
                     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${post?.featuredImage})`,
                   }}
                 >
-                  <div className=" max-w-2xl flex flex-col gap-5  text-white">
+                  <div className=" max-w-2xl flex flex-col gap-5 h-auto text-white">
                     <h1 className="sm:text-5xl text-xl w-[60%] font-bold uppercase sm:w-full p-2">
                       {post?.title}
                     </h1>
