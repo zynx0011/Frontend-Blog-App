@@ -5,7 +5,7 @@ function Logo({ width = "100px" }) {
     <img
       src="https://blog.logrocket.com/wp-content/uploads/2021/04/express-js-template-engines.png"
       alt="Logo"
-      className="rounded-lg w-[80px]"
+      className="rounded-lg w-[80px] h-auto"
     />
   );
 }
