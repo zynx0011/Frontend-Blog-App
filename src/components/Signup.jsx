@@ -131,7 +131,10 @@ function Signup() {
               // Add a custom validation message for the password
               validationMessage={
                 !validatePassword(password) &&
-                "Password must be at least 8 characters long, including at least one uppercase letter and one special character."
+                setError(
+                  true,
+                  "Password must be at least 8 characters long and contain at least one uppercase letter and one special character"
+                )
               }
             />
             {/* <Input
