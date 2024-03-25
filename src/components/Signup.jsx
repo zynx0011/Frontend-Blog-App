@@ -59,6 +59,13 @@ function Signup() {
     }
   };
 
+  const validatePassword = (value) => {
+    // Password must be at least 8 characters long
+    // and contain at least one uppercase letter and one special character
+    const regex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/;
+    return regex.test(value);
+  };
+
   return (
     <div className="flex items-center justify-center   max-h-screen p-3 sm:p-[15%]">
       <div className="div w-10 bg-gradient-to-r from-slate-700 via-slate-800 to-slate-900 h-[592px]  border sm:ml-[16%] flex items-center justify-center rounded-xl sm:w-[30%]">
@@ -117,11 +124,15 @@ function Signup() {
             <Input
               label="Password: "
               type="password"
-              minLength={8}
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               placeholder="Enter your password"
               className="outline-black/30"
+              // Add a custom validation message for the password
+              validationMessage={
+                !validatePassword(password) &&
+                "Password must be at least 8 characters long, including at least one uppercase letter and one special character."
+              }
             />
             {/* <Input
               label="phone no"
