@@ -48,7 +48,7 @@ function Signup() {
         }
       );
       navigate("/");
-      console.log(res);
+      // console.log(res);
       dispatch(signInSuccess(res.data.data));
       setLoading(false);
     } catch (error) {
@@ -117,6 +117,7 @@ function Signup() {
             <Input
               label="Password: "
               type="password"
+              minLength={8}
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               placeholder="Enter your password"
