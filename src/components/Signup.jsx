@@ -36,11 +36,17 @@ function Signup() {
     try {
       setLoading(true);
       setError(false);
-      const res = await axios.post(`${API_URL}/api/v1/users/Signup`, {
-        username,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        `${API_URL}/api/v1/users/Signup`,
+        {
+          username,
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       navigate("/");
       console.log(res);
       dispatch(signInSuccess(res.data.data));
