@@ -26,6 +26,7 @@ import ChangePass from "./components/pages/ChangePass.jsx";
 import ForgotPass from "./components/pages/ForgotPass.jsx";
 import ForgotpassPg from "./components/pages/NewPasswordPage.jsx";
 import Search from "./components/pages/Search.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // const router = createBrowserRouter([
 //   {
@@ -104,11 +105,13 @@ const router = createBrowserRouter(
     </Route>
   )
 );
-
+const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <RouterProvider router={router} />
-    </PersistGate>
+    <QueryClientProvider client={queryClient}>
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
+    </QueryClientProvider>
   </Provider>
 );

@@ -7,29 +7,29 @@ import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { API_URL } from "../../config";
+import { useQuery } from "@tanstack/react-query";
 
 const Home = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
   const { currentUser } = useSelector((state) => state.auth);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const data = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get(`${API_URL}/api/v1/listing/get`);
-        // console.log(res);
-        setPosts(res.data.data);
-        setLoading(false);
-      } catch (error) {
-        setLoading(true);
-        console.log(error, "error in home");
-      }
-    };
-    data();
-  }, []);
+  const fetchPosts = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/api/v1/listing/get`);
+      // console.log(res.data?.data);
+      return res.data?.data;
+      // setPosts(res.data.data);
+    } catch (error) {
+      console.log(error, "error in home");
+    }
+  };
+
+  const { data: posts, isLoading } = useQuery({
+    queryKey: ["posts"],
+    queryFn: fetchPosts,
+    staleTime: 6000 * 4,
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ const Home = () => {
     navigate(`/search?/${serachQuery}`);
   };
 
-  return loading ? (
+  return isLoading ? (
     <div className="flex items-center justify-center text-white min-h-screen">
       <Box>
         <CircularProgress />
@@ -153,12 +153,18 @@ const Home = () => {
       <div className="flex items-center flex-col gap-7 justify-center mt-7 mb-7 p-6">
         <div>
           <h1 className="font-bold text-5xl text-center text-white">
-            {posts[2]?.title}
+            {posts ? posts[2]?.title : "Loading..."}
           </h1>
         </div>
         <div>
-          <Link to={`/post/${posts[2]?._id}`}>
-            <img src={posts[2]?.featuredImage} alt="" className="rounded-lg" />
+          <Link to={`/post/${posts?._id}`}>
+            {" "}
+            {/* // posts[2]._id */}
+            <img
+              src={posts ? posts[2]?.featuredImage : "Loading..."}
+              alt=""
+              className="rounded-lg"
+            />
           </Link>
         </div>
       </div>
