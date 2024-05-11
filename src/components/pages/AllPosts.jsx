@@ -4,28 +4,29 @@ import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { API_URL } from "../../config";
+import { useQuery } from "@tanstack/react-query";
 
 function AllPosts() {
-  const [posts, setPosts] = useState([]);
   //
-  // const path = "https://blog-app-backend-c9w1.onrender.com/api/v1";
 
-  useEffect(() => {
-    const data = async () => {
-      try {
-        const res = await axios.get(`${API_URL}/api/v1/listing/get`, {
-          withCredentials: true,
-        });
-        // console.log(res);
-        setPosts(res.data.data);
-      } catch (error) {
-        console.log(error, "error in allposts");
-      }
-    };
-    data();
-  }, []);
+  const fetchPosts = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/api/v1/listing/get`, {
+        withCredentials: true,
+      });
+      return res.data?.data;
+    } catch (error) {
+      console.log(error, "error in allposts");
+    }
+  };
 
-  if (posts.length == 0) {
+  const { data: posts, isLoading } = useQuery({
+    queryKey: ["all-posts"],
+    queryFn: fetchPosts,
+    staleTime: 6000 * 4,
+  });
+
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center text-white min-h-screen">
         <Box>

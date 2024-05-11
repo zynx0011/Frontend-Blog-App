@@ -9,7 +9,6 @@ import { API_URL } from "../../config";
 
 const Myposts = () => {
   const [posts, setPosts] = useState([]);
-  console.log(posts);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);

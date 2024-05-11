@@ -23,7 +23,7 @@ const Profile = () => {
 
   const [userInfo, setUserInfo] = useState({});
   const params = useParams();
-  console.log(userInfo);
+  // console.log(userInfo);
   const [bio, setBio] =
     useState(` Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   Integer nec odio. Praesent libero. Sed cursus ante dapibus
@@ -44,7 +44,7 @@ const Profile = () => {
     };
 
     userInfo();
-  }, [params.id === userInfo._id]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
