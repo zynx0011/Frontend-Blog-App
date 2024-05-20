@@ -12,13 +12,16 @@ import { useQuery } from "@tanstack/react-query";
 const Home = () => {
   const { currentUser } = useSelector((state) => state.auth);
   const [search, setSearch] = useState("");
+  const [Loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const fetchPosts = async () => {
     try {
+      setLoading(true);
       const res = await axios.get(`${API_URL}/api/v1/listing/get`);
       // console.log(res.data?.data);
       return res.data?.data;
+      setLoading(false);
       // setPosts(res.data.data);
     } catch (error) {
       console.log(error, "error in home");
@@ -45,6 +48,10 @@ const Home = () => {
   return isLoading ? (
     <div className="flex items-center justify-center text-white min-h-screen">
       <Box>
+        <h1>
+          Loading the data from the server it might take some time because it is
+          deploy on free server{" "}
+        </h1>
         <CircularProgress />
       </Box>
     </div>
