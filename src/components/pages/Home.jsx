@@ -48,11 +48,13 @@ const Home = () => {
   return isLoading ? (
     <div className="flex items-center justify-center text-white min-h-screen">
       <Box>
-        <h1>
-          Loading the data from the server it might take some time because it is
-          deploy on free server{" "}
-        </h1>
-        <CircularProgress />
+        <div className="flex flex-col items-center justify-center gap-7">
+          <p className="text-xl">
+            Loading the data from the server it might take some time because it
+            is deploy on free server{" "}
+          </p>
+          <CircularProgress />
+        </div>
       </Box>
     </div>
   ) : (
